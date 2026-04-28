@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Results</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body class="results-bg">
+
+<div class="main-container">
+
+<h1 class="title">📊 Screening Results</h1>
+
+{% if results and results|length > 0 %}
+
+<div class="sticky-bar">
+    <div class="actions">
+        <button class="download-all-btn" onclick="downloadAllReports()">📦 ZIP</button>
+        <button class="csv-btn" onclick="downloadCSV()">📊 CSV</button>
+
+        <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    </div>
+</div>
+
+<!-- CHARTS -->
+<div class="analytics-section">
+
+    <div class="chart-card">
+        <h3>📊 Score Distribution</h3>
+        <canvas id="scoreChart"></canvas>
+    </div>
+
+    <div class="chart-card">
+        <h3>🥧 Selection Ratio</h3>
+        <canvas id="selectionChart"></canvas>
+    </div>
+
+</div>
+
+<!-- CARDS -->
+<div class="grid">
+{% for candidate in results %}
+<div class="result-card rank-{{ loop.index }}">
+
+    <div class="rank-badge">🏆 #{{ loop.index }}</div>
+
+    <p class="filename">{{ candidate.file }}</p>
+
+    <!-- ✅ SAFE BUTTON (NO ERROR) -->
+    <button class="download-btn"
+        data-candidate='{{ candidate | tojson }}'>
+        📄 Download Report
+    </button>
+
+    <!-- SCORE -->
+    <div class="progress-bar">
+        <div class="progress" style="width: {{ candidate.final_score }}%">
+            {{ candidate.final_score }}%
+        </div>
+    </div>
+
+    <!-- MATCHED -->
+    <div class="skills">
+        <span class="label">Matched</span>
+        <div class="tags">
+        {% for skill in candidate.matched_required_skills %}
+            <span class="tag matched">{{ skill }}</span>
+        {% endfor %}
+        {% if not candidate.matched_required_skills %}
+            <span class="tag none">None</span>
+        {% endif %}
+        </div>
+    </div>
+
+    <!-- MISSING -->
+    <div class="skills">
+        <span class="label">Missing</span>
+        <div class="tags">
+        {% for skill in candidate.missing_required_skills %}
+            <span class="tag missing">{{ skill }}</span>
+        {% endfor %}
+        {% if not candidate.missing_required_skills %}
+            <span class="tag none">None</span>
+        {% endif %}
+        </div>
+    </div>
+
+    <!-- STATUS -->
+    <div class="status {{ 'selected' if candidate.decision == 'Selected' else 'rejected' }}">
+        {{ candidate.decision }}
+    </div>
+
+</div>
+{% endfor %}
+</div>
+
+{% else %}
+<p class="no-data">⚠ No results found</p>
+{% endif %}
+
+</div>
+
+<!-- ✅ SAFE JSON (NO ERROR) -->
+<script id="results-data" type="application/json">
+{{ results | tojson | safe }}
+</script>
+
+<!-- ORDER IS IMPORTANT -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

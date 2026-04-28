@@ -1,1 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Resume Screening</title>
 
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="home-bg">
+    <div id="loader" class="loader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <p>🤖 AI is analyzing resumes...</p>
+        </div>
+    </div>
+
+<div class="container">
+
+    <h1 class="main-title">🤖 AI Resume Screening</h1>
+    <p class="subtitle">Smart ATS-based Resume Ranking System</p>
+
+    <div class="glass-card">
+
+        <form action="/analyze" method="post" enctype="multipart/form-data">
+
+            <!-- Required Skills -->
+            <div class="input-group">
+                <label>Required Skills</label>
+                <input type="text" name="required_skills" placeholder="python, sql, machine learning" required>
+            </div>
+
+            <!-- Bonus Skills -->
+            <div class="input-group">
+                <label>Bonus Skills</label>
+                <input type="text" name="bonus_skills" placeholder="aws, docker, nodejs">
+            </div>
+
+            <!-- 🔥 IMPROVED DRAG & DROP -->
+            <div class="upload-area" id="drop-area">
+                <p class="upload-title">📂 Drag & Drop Resumes</p>
+                <p class="upload-sub">PDF only • Multiple files supported</p>
+                <span class="upload-divider">or click to browse</span>
+
+                <input type="file" name="resumes" multiple accept=".pdf" hidden>
+
+                <p id="file-count"></p>
+            </div>
+
+            <button type="submit" class="submit-btn">🚀 Analyze Resumes</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

@@ -1,1 +1,705 @@
+/* ---------------- GLOBAL ---------------- */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
 
+/* ---------------- HOME BACKGROUND ---------------- */
+.home-bg {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1d2671, #c33764);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ---------------- RESULT BACKGROUND ---------------- */
+/* 🔥 IMPROVED RESULT BACKGROUND */
+.results-bg {
+    min-height: 100vh;
+    background: linear-gradient(
+        135deg,
+        #1f2a6c 0%,     /* deep blue */
+        #3a0ca3 40%,    /* rich purple */
+        #7209b7 70%,    /* violet */
+        #4cc9f0 100%    /* soft cyan highlight */
+    );
+    background-attachment: fixed;
+}
+
+/* ---------------- CONTAINER ---------------- */
+.container {
+    text-align: center;
+    width: 100%;
+}
+
+.main-container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 30px;
+}
+
+/* ---------------- TITLE ---------------- */
+.main-title, .title {
+    font-size: 42px;
+    color: white;
+}
+
+.subtitle {
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 30px;
+}
+
+/* ---------------- GLASS CARD ---------------- */
+.glass-card {
+    width: 500px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(25px);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+}
+
+/* ---------------- RESULT CARD ---------------- */
+.result-card {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(18px);
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    transition: 0.3s;
+}
+
+.result-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+.result-card:first-child {
+    border: 2px solid gold;
+    box-shadow: 0 0 20px gold;
+}
+
+/* ---------------- INPUT ---------------- */
+.input-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    color: white;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255,255,255,0.15);
+    color: white;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    background: rgba(255,255,255,0.25);
+    box-shadow: 0 0 10px #00f2ff;
+    outline: none;
+}
+
+/* ---------------- UPLOAD ---------------- */
+.upload-area {
+    border: 2px dashed rgba(255,255,255,0.4);
+    padding: 30px;
+    border-radius: 20px;
+    color: white;
+    margin-bottom: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.upload-area:hover {
+    background: rgba(255,255,255,0.1);
+    transform: scale(1.02);
+}
+
+.upload-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.upload-sub {
+    font-size: 13px;
+    opacity: 0.7;
+}
+
+.upload-divider {
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+/* Drag active */
+.drag-over {
+    background: rgba(0,255,200,0.2);
+    border-color: #00ffe0;
+    box-shadow: 0 0 20px #00ffe0;
+}
+
+/* ---------------- BUTTON ---------------- */
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 40px;
+    border: none;
+    background: linear-gradient(135deg, #00f260, #0575e6);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,255,150,0.5);
+}
+
+/* ---------------- GRID ---------------- */
+.grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* ---------------- PROGRESS BAR ---------------- */
+.progress-bar {
+    background: rgba(255,255,255,0.15);
+    border-radius: 20px;
+    margin: 15px 0;
+    overflow: hidden;
+}
+
+.progress {
+    padding: 6px;
+    text-align: center;
+    font-weight: bold;
+    background: linear-gradient(90deg, #00f260, #0575e6);
+    border-radius: 20px;
+}
+
+/* ---------------- STATUS ---------------- */
+.status {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.selected {
+    background: linear-gradient(135deg, #00e676, #00c853);
+}
+
+.rejected {
+    background: linear-gradient(135deg, #ff1744, #d50000);
+}
+
+/* ---------------- TEXT ---------------- */
+.filename {
+    font-size: 13px;
+    opacity: 0.7;
+}
+
+/* ---------------- CHARTS ---------------- */
+.charts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+canvas {
+    max-width: 100%;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* ---------------- FILE COUNT ---------------- */
+#file-count {
+    font-size: 13px;
+    margin-top: 10px;
+    color: #ddd;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 600px) {
+    .glass-card {
+        width: 90%;
+    }
+}
+
+/* ---------------- TAGS (SKILLS) ---------------- */
+.tags {
+    margin-top: 5px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 3px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.matched {
+    background: #00e676;
+    color: black;
+}
+
+.missing {
+    background: #ff5252;
+    color: white;
+}
+
+.none {
+    background: gray;
+}
+
+/* ---------------- WHY SECTION ---------------- */
+.why {
+    margin-top: 10px;
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+/* ---------------- TOP 3 HIGHLIGHT ---------------- */
+.rank-1 {
+    border: 2px solid gold;
+    box-shadow: 0 0 25px gold;
+}
+
+.rank-2 {
+    border: 2px solid silver;
+    box-shadow: 0 0 20px silver;
+}
+
+.rank-3 {
+    border: 2px solid #cd7f32;
+    box-shadow: 0 0 20px #cd7f32;
+}
+
+/* ================= RESULT PAGE UPGRADE ================= */
+
+/* Charts layout */
+.charts-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.chart-box {
+    background: rgba(255,255,255,0.12);
+    padding: 20px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+}
+
+/* Rank badge */
+.rank-badge {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+/* Labels */
+.label {
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+/* Tags */
+.tags {
+    margin-top: 5px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 3px;
+    border-radius: 15px;
+    font-size: 12px;
+}
+
+.matched {
+    background: #00e676;
+    color: black;
+}
+
+.missing {
+    background: #ff5252;
+    color: white;
+}
+
+.none {
+    background: gray;
+}
+
+/* Why */
+.why {
+    margin-top: 10px;
+    font-size: 13px;
+    opacity: 0.85;
+}
+
+/* Status */
+.status {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.selected {
+    background: linear-gradient(135deg, #00e676, #00c853);
+}
+
+.rejected {
+    background: linear-gradient(135deg, #ff1744, #d50000);
+}
+
+/* Top ranks */
+.rank-1 {
+    border: 2px solid gold;
+    box-shadow: 0 0 25px gold;
+}
+
+.rank-2 {
+    border: 2px solid silver;
+    box-shadow: 0 0 20px silver;
+}
+
+.rank-3 {
+    border: 2px solid #cd7f32;
+    box-shadow: 0 0 20px #cd7f32;
+}
+
+/* Empty */
+.no-data {
+    text-align: center;
+    color: white;
+    margin-top: 50px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .charts-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------- LOADER ---------- */
+.loader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(10,10,30,0.95);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.loader-content {
+    text-align: center;
+    color: white;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid rgba(255,255,255,0.2);
+    border-top: 6px solid #00f2ff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.download-btn {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(135deg, #ff9f43, #ff6b6b);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.download-btn:hover {
+    transform: scale(1.05);
+}
+
+.logout-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #ff5252;
+    padding: 8px 15px;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+/* ---------------- TOP ACTION BAR ---------------- */
+.top-actions {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+/* ---------------- DOWNLOAD ALL BUTTON ---------------- */
+.download-all-btn {
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+
+    color: white;
+    background: linear-gradient(135deg, #ff7a18, #ff3d77);
+
+    box-shadow: 0 6px 20px rgba(255, 80, 120, 0.4);
+    transition: all 0.3s ease;
+}
+
+/* Hover */
+.download-all-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(255, 80, 120, 0.6);
+}
+
+/* Click effect */
+.download-all-btn:active {
+    transform: scale(0.95);
+}
+
+/* Glow animation */
+.download-all-btn {
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 10px rgba(255, 80, 120, 0.4);
+    }
+    to {
+        box-shadow: 0 0 25px rgba(255, 80, 120, 0.9);
+    }
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 768px) {
+    .download-all-btn {
+        width: 90%;
+        font-size: 15px;
+    }
+}
+
+/* ---------------- STICKY BAR ---------------- */
+.sticky-bar {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+
+    backdrop-filter: blur(15px);
+    background: rgba(0,0,0,0.2);
+
+    padding: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* LIGHT MODE */
+.light-mode {
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    color: #111;
+}
+
+.light-mode .result-card {
+    background: rgba(255,255,255,0.7);
+    color: #111;
+}
+
+.light-mode .progress {
+    color: white;
+}
+
+.result-card {
+    animation: fadeUp 0.6s ease;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.progress {
+    position: relative;
+    overflow: hidden;
+}
+
+.progress::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.6),
+        transparent
+    );
+
+    animation: shine 2s infinite;
+}
+
+@keyframes shine {
+    to {
+        left: 100%;
+    }
+}
+
+.result-card:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+
+.tag {
+    transition: 0.3s;
+}
+
+.tag:hover {
+    transform: scale(1.1);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+
+    z-index: -1;
+}
+
+/* ---------------- ANALYTICS SECTION ---------------- */
+.analytics-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+/* ---------------- CHART CARD ---------------- */
+.chart-card {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px);
+
+    border-radius: 20px;
+    padding: 20px;
+
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+
+    transition: 0.3s;
+    position: relative;
+}
+
+/* Hover effect */
+.chart-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+/* Title */
+.chart-card h3 {
+    color: white;
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Canvas styling */
+.chart-card canvas {
+    width: 100% !important;
+    height: 280px !important;
+}
+
+/* Glow border effect */
+.chart-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.chart-card:hover::before {
+    opacity: 1;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 768px) {
+    .chart-card canvas {
+        height: 220px !important;
+    }
+
+    .analytics-section {
+        gap: 15px;
+    }
+}
+
+.chart-card {
+    animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
